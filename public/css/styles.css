@@ -26,6 +26,89 @@ body, html {
   min-height: 100vh;
 }
 
+/* line 2, ../../sass/partials/_modules.scss */
+.bg-footer {
+  background-attachment: scroll;
+  background-image: url(../img/footer.jpg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* line 5, ../../sass/partials/_modules.scss */
+.bg-light-gray {
+  background-color: #f2f8f4 !important;
+}
+
+/* line 10, ../../sass/partials/_modules.scss */
+.border-caption {
+  border-color: #98c1bb !important;
+}
+
+/* line 15, ../../sass/partials/_modules.scss */
+.contact-bg {
+  background-color: #f2f8f4;
+}
+/* line 19, ../../sass/partials/_modules.scss */
+.contact-form ::-webkit-input-placeholder {
+  color: #98c1bb;
+}
+/* line 22, ../../sass/partials/_modules.scss */
+.contact-form ::-moz-placeholder {
+  color: #98c1bb;
+}
+/* line 25, ../../sass/partials/_modules.scss */
+.contact-form :-ms-input-placeholder {
+  color: #98c1bb;
+}
+/* line 28, ../../sass/partials/_modules.scss */
+.contact-form :-moz-placeholder {
+  color: #98c1bb;
+}
+
+/* line 34, ../../sass/partials/_modules.scss */
+.login-form, .register-form {
+  background-attachment: scroll;
+  background-image: url(../img/login.jpg);
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* line 37, ../../sass/partials/_modules.scss */
+.login-form ::-webkit-input-placeholder, .register-form ::-webkit-input-placeholder {
+  color: #98c1bb;
+}
+/* line 40, ../../sass/partials/_modules.scss */
+.login-form ::-moz-placeholder, .register-form ::-moz-placeholder {
+  color: #98c1bb;
+}
+/* line 43, ../../sass/partials/_modules.scss */
+.login-form :-ms-input-placeholder, .register-form :-ms-input-placeholder {
+  color: #98c1bb;
+}
+/* line 46, ../../sass/partials/_modules.scss */
+.login-form :-moz-placeholder, .register-form :-moz-placeholder {
+  color: #98c1bb;
+}
+
+/* line 57, ../../sass/partials/_modules.scss */
+.opacity-8 {
+  opacity: 0.8;
+}
+/* line 60, ../../sass/partials/_modules.scss */
+.opacity-9 {
+  opacity: 0.9;
+}
+
+/* line 65, ../../sass/partials/_modules.scss */
+.text-caption {
+  color: #98c1bb !important;
+}
+
+/* line 70, ../../sass/partials/_modules.scss */
+textarea {
+  resize: none;
+}
+
 /* line 31, ../../sass/partials/_mixins.scss */
 .error-s1 {
   background-attachment: fixed;
