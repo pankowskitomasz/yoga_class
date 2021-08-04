@@ -7,7 +7,7 @@ class Navigation extends Component{
     render(){
         let menuContent = this.props.menuItems.filter((item)=>item.navItem).map((item,idx)=>{
             return <Nav.Item key={idx}>
-                <Link to={item.path} className="nav-link fw-bold text-white text-shadow">
+                <Link to={item.path} className="nav-link fw-bold text-gray-green">
                     {item.name}
                 </Link>
             </Nav.Item>;
@@ -20,7 +20,7 @@ class Navigation extends Component{
                     </Link>
                 </Navbar.Brand>
                 <Navbar.Toggle className="border-light"/>
-                <Navbar.Collapse>
+                <Navbar.Collapse className="bg-green-gray">
                     <Nav className="ms-auto text-end px-3">
                         {menuContent}
                     </Nav>

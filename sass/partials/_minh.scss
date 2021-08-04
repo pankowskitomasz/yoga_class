@@ -11,4 +11,7 @@
     &-100vh{
         min-height: 100vh;
     }
+    &-footer-adj{
+        @include calc-param(min-height,100vh,$footer__height);
+    }
 }

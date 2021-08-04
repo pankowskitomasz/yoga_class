@@ -25,8 +25,27 @@ body, html {
 .minh-100vh {
   min-height: 100vh;
 }
+/* line 14, ../../sass/partials/_minh.scss */
+.minh-footer-adj {
+  min-height: calc( 100vh - 56px );
+  min-height: -o-calc( 100vh - 56px );
+  min-height: -moz-calc( 100vh - 56px );
+  min-height: -webkit-calc( 100vh - 56px );
+}
 
 /* line 2, ../../sass/partials/_modules.scss */
+.bg-classes {
+  background-attachment: scroll;
+  background-image: url(../img/classes.jpg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* line 5, ../../sass/partials/_modules.scss */
+.bg-green-gray {
+  background-color: #deeee7 !important;
+}
+/* line 8, ../../sass/partials/_modules.scss */
 .bg-footer {
   background-attachment: scroll;
   background-image: url(../img/footer.jpg);
@@ -34,38 +53,42 @@ body, html {
   background-repeat: no-repeat;
   background-size: cover;
 }
-/* line 5, ../../sass/partials/_modules.scss */
+/* line 11, ../../sass/partials/_modules.scss */
 .bg-light-gray {
   background-color: #f2f8f4 !important;
 }
 
-/* line 10, ../../sass/partials/_modules.scss */
+/* line 16, ../../sass/partials/_modules.scss */
 .border-caption {
   border-color: #98c1bb !important;
 }
+/* line 19, ../../sass/partials/_modules.scss */
+.border-green-gray {
+  border-color: #9bcbb6 !important;
+}
 
-/* line 15, ../../sass/partials/_modules.scss */
+/* line 24, ../../sass/partials/_modules.scss */
 .contact-bg {
   background-color: #f2f8f4;
 }
-/* line 19, ../../sass/partials/_modules.scss */
+/* line 28, ../../sass/partials/_modules.scss */
 .contact-form ::-webkit-input-placeholder {
   color: #98c1bb;
 }
-/* line 22, ../../sass/partials/_modules.scss */
+/* line 31, ../../sass/partials/_modules.scss */
 .contact-form ::-moz-placeholder {
   color: #98c1bb;
 }
-/* line 25, ../../sass/partials/_modules.scss */
+/* line 34, ../../sass/partials/_modules.scss */
 .contact-form :-ms-input-placeholder {
   color: #98c1bb;
 }
-/* line 28, ../../sass/partials/_modules.scss */
+/* line 37, ../../sass/partials/_modules.scss */
 .contact-form :-moz-placeholder {
   color: #98c1bb;
 }
 
-/* line 34, ../../sass/partials/_modules.scss */
+/* line 43, ../../sass/partials/_modules.scss */
 .login-form, .register-form {
   background-attachment: scroll;
   background-image: url(../img/login.jpg);
@@ -73,38 +96,42 @@ body, html {
   background-repeat: no-repeat;
   background-size: cover;
 }
-/* line 37, ../../sass/partials/_modules.scss */
+/* line 46, ../../sass/partials/_modules.scss */
 .login-form ::-webkit-input-placeholder, .register-form ::-webkit-input-placeholder {
   color: #98c1bb;
 }
-/* line 40, ../../sass/partials/_modules.scss */
+/* line 49, ../../sass/partials/_modules.scss */
 .login-form ::-moz-placeholder, .register-form ::-moz-placeholder {
   color: #98c1bb;
 }
-/* line 43, ../../sass/partials/_modules.scss */
+/* line 52, ../../sass/partials/_modules.scss */
 .login-form :-ms-input-placeholder, .register-form :-ms-input-placeholder {
   color: #98c1bb;
 }
-/* line 46, ../../sass/partials/_modules.scss */
+/* line 55, ../../sass/partials/_modules.scss */
 .login-form :-moz-placeholder, .register-form :-moz-placeholder {
   color: #98c1bb;
 }
 
-/* line 57, ../../sass/partials/_modules.scss */
+/* line 66, ../../sass/partials/_modules.scss */
 .opacity-8 {
   opacity: 0.8;
 }
-/* line 60, ../../sass/partials/_modules.scss */
+/* line 69, ../../sass/partials/_modules.scss */
 .opacity-9 {
   opacity: 0.9;
 }
 
-/* line 65, ../../sass/partials/_modules.scss */
+/* line 74, ../../sass/partials/_modules.scss */
 .text-caption {
   color: #98c1bb !important;
 }
+/* line 77, ../../sass/partials/_modules.scss */
+.text-green-gray {
+  color: #9bcbb6 !important;
+}
 
-/* line 70, ../../sass/partials/_modules.scss */
+/* line 82, ../../sass/partials/_modules.scss */
 textarea {
   resize: none;
 }

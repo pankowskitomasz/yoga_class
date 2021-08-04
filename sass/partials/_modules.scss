@@ -1,15 +1,24 @@
 .bg{
+    &-classes{
+        @include set-background($bg__classes-img,0,"top center","cover","scroll");
+    }
+	&-green-gray{
+		background-color: $color__green-gray!important;
+	}
     &-footer{
         @include set-background($bg__footer-img,0,"top center","cover","scroll");
     }
-	&-light-gray{
-		background-color: $color__light-gray!important;
-	}
+    &-light-gray{
+      background-color: $color__light-gray!important;
+    }
 }
 .border{
   	&-caption{
 		  border-color: $color__caption!important;
-	  }
+	}
+	&-green-gray{
+		border-color: darken($color__green-gray,20%)!important;
+	}
 }
 .contact{
     &-bg{
@@ -62,9 +71,12 @@
 	}
 }
 .text{
-  &-caption{
-    color: $color__caption!important;
-  }
+	&-caption{
+		color: $color__caption!important;
+	}
+	&-green-gray{
+		color: darken($color__green-gray,20%)!important;
+	}
 }
 
 textarea{
