@@ -1,3 +1,4 @@
+$bg__classes-img: "../img/classes.jpg";
 $bg__comingsoon-img: "../img/coming.jpg";
 $bg__contact-img: "../img/contact.jpg";
 $bg__error-img: $bg__comingsoon-img;
@@ -15,8 +16,10 @@ $bg__aoa:
 $box__shadow: 2px 2px 5px #333;
 $color__caption: darken(#b8d4d0,10%);
 $color__container-bg: #333;
+$color__green-gray: #deeee7;
 $color__light-gray: #f2f8f4;
 $color__shadow: #000;
+$footer__height: 56px;
 $header__height: 0px;
 $section__min-height: 100vh;
 $text__shadow: 1px 1px 4px $color__shadow;
