@@ -1,12 +1,14 @@
 import React,{Component} from "react";
-import Container from "../../node_modules/react-bootstrap/Container";
-import Row from "../../node_modules/react-bootstrap/Row";
-import Col from "../../node_modules/react-bootstrap/Col";
-import Button from "../../node_modules/react-bootstrap/Button";
-import Form from "../../node_modules/react-bootstrap/Form";
-import update from "react-addons-update";
-import {Link} from "react-router-dom";
 import {APP_LINKS} from "../config";
+import {Link} from "react-router-dom";
+import Button from "../../node_modules/react-bootstrap/Button";
+import Col from "../../node_modules/react-bootstrap/Col";
+import Container from "../../node_modules/react-bootstrap/Container";
+import Form from "../../node_modules/react-bootstrap/Form";
+import Row from "../../node_modules/react-bootstrap/Row";
+import update from "react-addons-update";
+import cookieApi from "../api/cookie_api";
+import loginFormApi from "../api/login_form_api";
 
 class LoginForm extends Component{
     constructor() {
@@ -20,25 +22,9 @@ class LoginForm extends Component{
     }
 
     componentDidMount(){
-        if(this.getCookie("tkid").length>0){
-            let formData = new FormData();
-            let utk = this.getCookie("tkid");
-            formData.append("tkid",utk);
-            fetch(APP_LINKS.users,{
-                method:"POST",
-                body:formData
-            })
-            .then((response)=>{
-                if(response.status===200){
-                    this.props.backNav("dashboard");
-                }
-                else if(response.status===401){
-                    this.setCookie("tkid","",-1);
-                }
-            })
-            .catch((error)=>{
-                this.props.backNav("form");
-            });  
+        if(cookieApi.getCookie("tkid").length>0){
+            let formData = loginFormApi.getTokenData(cookieApi.getCookie);
+            loginFormApi.sendToken(this.props.backNav,cookieApi.setCookie,formData,APP_LINKS.users);
             this.clearForm();
         }
     }
@@ -59,63 +45,17 @@ class LoginForm extends Component{
         }
     }
 
-    getCookie(cname) {
-        var name = cname + "=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
-          var c = ca[i];
-          while (c.charAt(0) === ' ') {
-            c = c.substring(1);
-          }
-          if (c.indexOf(name) === 0) {
-            return c.substring(name.length, c.length);
-          }
-        }
-        return "";
-    }
-
-    setCookie(cname, cvalue, exh) {
-        var d = new Date();
-        d.setTime(d.getTime() + (exh*60*60*1000));
-        var expires = "expires="+ d.toUTCString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-    }
-
     sendForm(){
         if(this.state.userData.name.length!==0
-        && this.state.userData.pass.length!==0){
-            let formData = new FormData();
-            formData.append("userName",this.state.userData.name);
-            formData.append("userPass",this.state.userData.pass);
-            if(this.getCookie("tkid").length>0){
-                let utk = this.getCookie("tkid");
-                formData.append("tkid",utk);
-            }
-            fetch(APP_LINKS.users,{
-                method:"POST",
-                body:formData
-            })
-            .then((response)=>response.json())
-            .then((data)=>{
-                if(data["tkid"]!==undefined){                    
-                    this.setCookie("tkid",data.tkid,2);
-                    this.props.backNav("dashboard");
-                }
-            })
-            .catch((error)=>{
-                this.props.backNav("error");
-            });  
+        && this.state.userData.pass.length!==0){            
+            let formData = loginFormApi.getLoginData(this.state.userData,cookieApi.getCookie);
+            loginFormApi.sendData(this.props.backNav,formData,cookieApi.setCookie,APP_LINKS.users);
             this.clearForm();
         }
     }
 
     clearForm(){
-        let clearData = update(this.state.userData,{
-            name: {$set: ""},
-            pass: {$set:""}
-        });
-        this.setState({ userData: clearData });        
+        this.setState({userData: loginFormApi.getClearData()});       
     }
 
     render(){

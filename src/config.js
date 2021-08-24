@@ -26,6 +26,7 @@ const appCfg = {
 
 const APP_LINKS = {
     messages: "message.php",
+    register: "register.php",
     users: "user.php"
 };
 
