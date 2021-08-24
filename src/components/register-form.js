@@ -1,81 +1,86 @@
 import React,{Component} from "react";
-import Container from "../../node_modules/react-bootstrap/Container";
-import Row from "../../node_modules/react-bootstrap/Row";
-import Col from "../../node_modules/react-bootstrap/Col";
-import Button from "../../node_modules/react-bootstrap/Button";
-import Form from "../../node_modules/react-bootstrap/Form";
-import update from "react-addons-update";
-import {Link} from "react-router-dom";
 import {APP_LINKS} from "../config";
+import {Link} from "react-router-dom";
+import Button from "../../node_modules/react-bootstrap/Button";
+import Col from "../../node_modules/react-bootstrap/Col";
+import Container from "../../node_modules/react-bootstrap/Container";
+import Form from "../../node_modules/react-bootstrap/Form";
+import Row from "../../node_modules/react-bootstrap/Row";
+import update from "react-addons-update";
+import cookieApi from "../api/cookie_api";
+import registerFormApi from "../api/register_form_api";
 
 class RegisterForm extends Component{
     constructor() {
         super();
         this.state = {
             userData: {
-                name: "",
-                pass: ""
+                firstName:"",
+                lastName:"",
+                emailAddr:"",
+                userLogin:"",
+                userPass:"",
+                userPassConfirm:""
             }
         };
     }
 
-    componentDidMount(){
-        if(this.getCookie("tkid").length>0){
-            let formData = new FormData();
-            let utk = this.getCookie("tkid");
-            formData.append("tkid",utk);
-            fetch(APP_LINKS.users,{
-                method:"POST",
-                body:formData
-            })
-            .then((response)=>{
-                if(response.status===200){
-                    this.props.backNav("dashboard");
-                }
-                else if(response.status===401){
-                    this.setCookie("tkid","",-1);
-                }
-            })
-            .catch((error)=>{
-                this.props.backNav("form");
-            });  
-            this.clearForm();
-        }
-    }
-
     updateUserData(ev) {
-
-    }
-
-    getCookie(cname) {
-        var name = cname + "=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
-          var c = ca[i];
-          while (c.charAt(0) === ' ') {
-            c = c.substring(1);
-          }
-          if (c.indexOf(name) === 0) {
-            return c.substring(name.length, c.length);
-          }
+        var updateData;
+        if (ev.target.name === "firstName") {
+            updateData = update(this.state.userData, {
+                firstName: { $set: ev.target.value }
+            });
+            this.setState({ userData: updateData });
         }
-        return "";
-    }
-
-    setCookie(cname, cvalue, exh) {
-        var d = new Date();
-        d.setTime(d.getTime() + (exh*60*60*1000));
-        var expires = "expires="+ d.toUTCString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        else if (ev.target.name === "lastName") {
+            updateData = update(this.state.userData, {
+                lastName: { $set: ev.target.value }
+            });
+            this.setState({ userData: updateData });
+        }
+        else if (ev.target.name === "emailAddr") {
+            updateData = update(this.state.userData, {
+                emailAddr: { $set: ev.target.value }
+            });
+            this.setState({ userData: updateData });
+        }
+        else if (ev.target.name === "userLogin") {
+            updateData = update(this.state.userData, {
+                userLogin: { $set: ev.target.value }
+            });
+            this.setState({ userData: updateData });
+        }
+        else if (ev.target.name === "userPass") {
+            updateData = update(this.state.userData, {
+                userPass: { $set: ev.target.value }
+            });
+            this.setState({ userData: updateData });
+        }
+        else if (ev.target.name === "userPassConfirm") {
+            updateData = update(this.state.userData, {
+                userPassConfirm: { $set: ev.target.value }
+            });
+            this.setState({ userData: updateData });
+        }
     }
 
     sendForm(){ 
-
+        if(this.state.userData.firstName.length!==0
+        && this.state.userData.lastName.length!==0
+        && this.state.userData.emailAddr.length!==0
+        && this.state.userData.userLogin.length!==0
+        && this.state.userData.userPass.length!==0
+        && this.state.userData.userPassConfirm.length!==0
+        && this.state.userData.userPass===this.state.userData.userPassConfirm){  
+            let formData = registerFormApi.getRegisterData(this.state.userData,cookieApi.getCookie("regcount"));
+            registerFormApi.sendData(this.props.backNav,formData,cookieApi.getCookie,APP_LINKS.register);
+            this.clearForm();            
+        }
     }
 
     clearForm(){
-
+        this.setState({userData: registerFormApi.getClearData()});   
     }
 
     render(){
@@ -97,7 +102,7 @@ class RegisterForm extends Component{
                                     placeholder="Enter first name" 
                                     className="rounded-pill border-caption text-secondary"
                                     maxLength="50"
-                                    name="userName"
+                                    name="firstName"
                                     onChange={this.updateUserData.bind(this)} 
                                     value={this.state.userData.name}
                                     required/>
@@ -108,7 +113,7 @@ class RegisterForm extends Component{
                                     placeholder="Enter last name" 
                                     className="rounded-pill border-caption text-secondary"
                                     maxLength="50"
-                                    name="userName"
+                                    name="lastName"
                                     onChange={this.updateUserData.bind(this)} 
                                     value={this.state.userData.name}
                                     required/>
@@ -119,7 +124,7 @@ class RegisterForm extends Component{
                                     placeholder="Enter email" 
                                     className="rounded-pill border-caption text-secondary"
                                     maxLength="50"
-                                    name="userName"
+                                    name="emailAddr"
                                     onChange={this.updateUserData.bind(this)} 
                                     value={this.state.userData.name}
                                     required/>
@@ -130,7 +135,7 @@ class RegisterForm extends Component{
                                     placeholder="Enter login" 
                                     className="rounded-pill border-caption text-secondary"
                                     maxLength="50"
-                                    name="userName"
+                                    name="userLogin"
                                     onChange={this.updateUserData.bind(this)} 
                                     value={this.state.userData.name}
                                     required/>
@@ -152,7 +157,7 @@ class RegisterForm extends Component{
                                     placeholder="Repeat password" 
                                     className="rounded-pill border-caption text-secondary"
                                     maxLength="40"
-                                    name="userPass"
+                                    name="userPassConfirm"
                                     onChange={this.updateUserData.bind(this)} 
                                     value={this.state.userData.pass}
                                     required/>
