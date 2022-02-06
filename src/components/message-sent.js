@@ -11,16 +11,16 @@ class MessageSent extends Component {
     }
     render() {
         return (
-            <Container fluid className={"contact-form align-items-center p-0 py-5 d-flex minh-50vh " + this.props.classExt}>
+            <Container fluid className={"login-form align-items-center p-0 py-5 bg-white d-flex minh-footer-adj " + this.props.classExt}>
                 <Row className="mx-auto text-center w-100">
                     <Col xs={10} md={6} className="mx-auto p-0 d-flex align-items-center">
-                        <Card className="mx-auto bg-green opacity-8 border-light shadow">
-                            <Card.Header className="text-white text-start border-light">
+                        <Card className="mx-auto bg-form border-secondary shadow bg-dark opacity-9">
+                            <Card.Header className="text-secondary text-start border-secondary">
                                 Message sent!
                             </Card.Header>
-                            <Card.Body className="text-center text-white p-5">
+                            <Card.Body className="text-center text-secondary bg-form p-5">
                                 <p className="lead">Message was sent!</p>
-                                <Button variant={"outline-light rounded-pill"} onClick={this.hndBack.bind(this)}>
+                                <Button variant={"outline-light border-secondary text-secondary rounded-pill"} onClick={this.hndBack.bind(this)}>
                                     back to Form
                                 </Button>
                             </Card.Body>
