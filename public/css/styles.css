@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "KaushanScript";
+  src: url("../fonts/KaushanScript-Regular.ttf");
+}
 /* line 1, ../../sass/partials/_layout.scss */
 * {
   box-sizing: border-box;
@@ -131,7 +135,13 @@ body, html {
   color: #9bcbb6 !important;
 }
 
-/* line 82, ../../sass/partials/_modules.scss */
+/* line 81, ../../sass/partials/_modules.scss */
+h1, h2, h3, h4, h5, h6, .nav-link {
+  font-family: "KaushanScript";
+  letter-spacing: 2px;
+}
+
+/* line 85, ../../sass/partials/_modules.scss */
 textarea {
   resize: none;
 }
