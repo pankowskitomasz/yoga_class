@@ -16,9 +16,9 @@ class AboutShort extends Component{
             </Link>;
         }
         return(        
-            <Container fluid className={"align-items-center p-0 d-flex minh-50vh "+this.props.classExt}>
-                <Row className="mx-auto text-center w-100 pt-5">
-                    <Col xs={12} md={6} className="mx-auto text-dark p-0 d-flex align-items-center">
+            <Container fluid className={"align-items-center p-0 d-flex minh-100vh "+this.props.classExt}>
+                <Row className="mx-auto text-center w-100 pt-5 pt-lg-0">
+                    <Col xs={12} lg={6} className="mx-auto text-dark p-0 d-flex align-items-center minh-50vh">
                         <div className="p-5 contact-bg">
                             <h1 className="display-5 font-logo text-caption fw-bold">
                                 Why yoga?
@@ -33,10 +33,8 @@ class AboutShort extends Component{
                             {linking}
                         </div>
                     </Col>
-                    <Col xs={12} md={6} className="mx-auto text-dark p-0 align-items-end text-end">
-                        <img alt="about"
-                            className="img-fluid"
-                            src="img/about/about-short.png"/>
+                    <Col xs={12} lg={6} className="mx-auto text-dark d-flex p-0 align-items-end text-end minh-50vh">
+                        <img alt="about" className="img-fluid ms-auto" src="img/about/about-short.png"/>
                     </Col>
                 </Row>
             </Container>    
